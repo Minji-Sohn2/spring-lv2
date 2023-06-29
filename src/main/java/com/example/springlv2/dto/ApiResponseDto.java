@@ -1,7 +1,6 @@
 package com.example.springlv2.dto;
 
 import lombok.Getter;
-import org.springframework.http.HttpStatus;
 
 @Getter
 public class ApiResponseDto {

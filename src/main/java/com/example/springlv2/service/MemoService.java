@@ -5,6 +5,7 @@ import com.example.springlv2.dto.MemoResponseDto;
 import com.example.springlv2.entity.Memo;
 import com.example.springlv2.repository.MemoRepository;
 import com.example.springlv2.security.UserDetailsImpl;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +22,7 @@ public class MemoService {
     }
 
 
-    public MemoResponseDto createMemo(MemoRequestDto memoRequestDto, UserDetailsImpl userDetails) {
+    public MemoResponseDto createMemo(MemoRequestDto memoRequestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         // RequestDto -> Entity
         Memo memo = memoRepository.save(new Memo(memoRequestDto, userDetails.getUser()));
 
@@ -39,7 +40,7 @@ public class MemoService {
     }
 
     @Transactional
-    public MemoResponseDto updateMemo(Long id, MemoRequestDto memoRequestDto, UserDetailsImpl userDetails) {
+    public MemoResponseDto updateMemo(Long id, MemoRequestDto memoRequestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
 
         Memo memo = findMemo(id);
 
@@ -52,7 +53,7 @@ public class MemoService {
     }
 
     @Transactional
-    public void deleteMemo(Long id, UserDetailsImpl userDetails) {
+    public void deleteMemo(Long id, @AuthenticationPrincipal UserDetailsImpl userDetails) {
 
         // 해당 메모가 DB에 존재하는지 확인
         Memo memo = findMemo(id);

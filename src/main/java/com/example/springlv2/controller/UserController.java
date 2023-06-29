@@ -2,9 +2,7 @@ package com.example.springlv2.controller;
 
 import com.example.springlv2.dto.ApiResponseDto;
 import com.example.springlv2.dto.SignupRequestDto;
-import com.example.springlv2.entity.User;
 import com.example.springlv2.service.UserService;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;

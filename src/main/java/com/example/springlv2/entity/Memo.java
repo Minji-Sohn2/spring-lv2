@@ -25,12 +25,15 @@ public class Memo extends Timestamped{
     @Column(name = "contents", nullable = false, length = 500)
     private String contents;
 
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     public Memo(MemoRequestDto memoRequestDto, User user) {
         this.title = memoRequestDto.getTitle();
         this.username = user.getUsername();
         this.contents = memoRequestDto.getContents();
+        this.user= user;
     }
 
     // Entity class는 Db와 직접적으로 연관됨

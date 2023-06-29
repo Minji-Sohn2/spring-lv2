@@ -2,7 +2,6 @@ package com.example.springlv2.security;
 
 import com.example.springlv2.entity.User;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
@@ -30,14 +29,11 @@ public class UserDetailsImpl implements UserDetails {
         return user.getUsername();
     }
 
+    // 사용x, 권한 있는 경우에서 role 부분만 지움
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-//        UserRoleEnum role = user.getRole();
-//        String authority = role.getAuthority();
-//
-//        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(authority);
+
         Collection<GrantedAuthority> authorities = new ArrayList<>();
-//        authorities.add(simpleGrantedAuthority);
 
         return authorities;
     }
